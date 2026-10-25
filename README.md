@@ -1,5 +1,7 @@
 # nuttyVR — nuttymod loader
 
+[nuttyVR website](https://the-nuttyvr-project.github.io/nuttyVR-nuttymod-loader-for-beat-saber/) · [Website source and deployment](docs/WEBSITE.md)
+
 [Download nightly toolkit ZIP](https://nightly.link/the-nuttyVR-project/nuttyVR-nuttymod-loader-for-beat-saber/workflows/nightly/main/nuttyvr-nightly.zip) · [Hub APK ZIP](https://nightly.link/the-nuttyVR-project/nuttyVR-nuttymod-loader-for-beat-saber/workflows/nightly/main/nuttyvr-hub.zip) · [Build status](https://github.com/the-nuttyVR-project/nuttyVR-nuttymod-loader-for-beat-saber/actions/workflows/nightly.yml)
 
 Nightly links become available after the first successful GitHub Actions run. Extract the ZIP before installing an APK. See [nightly setup](docs/NIGHTLY.md) for the signed snapshot mode and optional builds from source.
@@ -78,7 +80,7 @@ See [game integration](docs/GAME-INTEGRATION.md) and [validation](VALIDATION.md)
 
 ## Download page
 
-`website/src/` contains the responsive project page and a locally saved installation checklist. After building and packaging the Android project, run `python3 website/build.py` to prepare `website/dist/` with the real APKs, source ZIP, release ZIP and checksums. Serve that folder with a static web server or upload it to static hosting. All local links have been checked. This copy has not been published: Node.js and outbound DNS are unavailable in this environment, preventing the Sites source/publishing workflow. Browser rendering and JavaScript execution have not been verified here.
+`website/src/` contains the responsive project page and an installation checklist that saves progress in the browser. Run `python3 website/build.py` to build `website/dist/` directly from the checked-in signed APK snapshots, with source, APK ZIPs and checksums. The **Publish website** GitHub Actions workflow deploys this folder to GitHub Pages. See [website setup](docs/WEBSITE.md) for details. Browser rendering and headset interactions still require visual/device testing.
 
 ## Platform references
 

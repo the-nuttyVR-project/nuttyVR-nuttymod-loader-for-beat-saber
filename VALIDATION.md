@@ -19,7 +19,7 @@ No headset or Android emulator was available. ADB could not start its local list
 
 Native QMOD loading, Beat Saber injection, game patching, remote headset pairing and granting root are not implemented. No Beat Saber version has been validated or declared compatible.
 
-The website is local and unpublished. Node.js is unavailable, the Node download host cannot be resolved, and no browser preview tool is available. Static file/link validation passed; JavaScript syntax/execution and visual browser QA remain unverified. No hosted Site was registered.
+The website is prepared for GitHub Pages with a separate publishing workflow. Static asset/download checks run locally; JavaScript syntax is checked on the GitHub runner. No browser preview tool is available in this workspace, so visual browser QA and browser interaction testing remain unverified. The Pages workflow publishes the static build without a separate hosting service.
 
 The nightly workflow checks and uploads the signed snapshot to GitHub Actions. See the repository's Actions page for current run status and `NIGHTLY.json` in the download for the source commit and preparation mode.
 
