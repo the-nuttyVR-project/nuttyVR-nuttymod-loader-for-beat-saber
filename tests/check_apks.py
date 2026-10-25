@@ -35,7 +35,10 @@ for role, (_, filename) in MODULES.items():
     data = subprocess.check_output([str(BT / 'aapt2'), 'dump', 'badging', str(apk)], env=env, text=True)
     check(f"package: name='com.nuttyvr.{role}'" in data, f'{role} package identity')
     check("versionName='0.1.0'" in data and "versionCode='1'" in data, f'{role} version')
-    check("sdkVersion:'29'" in data and "targetSdkVersion:'34'" in data, f'{role} SDK')
+    # AAPT2 versions differ in whitespace around badging values.
+    minimum = re.search(r"(?m)^sdkVersion:\s*['\"]?(\d+)['\"]?\s*$", data)
+    target = re.search(r"(?m)^targetSdkVersion:\s*['\"]?(\d+)['\"]?\s*$", data)
+    check(minimum is not None and minimum.group(1) == '29' and target is not None and target.group(1) == '34', f'{role} SDK metadata: {data}')
     check("launchable-activity: name='com.nuttyvr.common." in data, f'{role} has launcher')
     with zipfile.ZipFile(apk) as archive:
         check(archive.testzip() is None and 'classes.dex' in archive.namelist(), f'{role} ZIP and dex')
