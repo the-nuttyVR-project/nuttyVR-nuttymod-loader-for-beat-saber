@@ -1,0 +1,7 @@
+pluginManagement { repositories { google(); mavenCentral(); gradlePluginPortal() } }
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories { google(); mavenCentral() }
+}
+rootProject.name = 'nuttyVR-nuttymod-loader'
+include ':common', ':hub', ':loader', ':rootmode', ':rootmodelib', ':nuttymod', ':vnedruntime', ':nuttymodruntime', ':demo'

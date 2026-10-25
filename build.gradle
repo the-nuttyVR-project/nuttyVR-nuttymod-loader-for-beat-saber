@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application' version '8.7.3' apply false
+    id 'com.android.library' version '8.7.3' apply false
+}
+def specs = [
+    rootmode: ['rootmode.apk'], rootmodelib: ['rootmodelib.apk'],
+    nuttymod: ['nuttymod.apk'], vnedruntime: ['vnedruntime.apk'],
+    nuttymodruntime: ['nuttymodruntime.apk']
+]
+subprojects {
+    if (name == 'common') {
+        apply plugin: 'com.android.library'
+        android { namespace 'com.nuttyvr.common' }
+    } else {
+        apply plugin: 'com.android.application'
+        android {
+            namespace "com.nuttyvr.${project.name}"
+            defaultConfig { applicationId "com.nuttyvr.${project.name}"; versionCode 1; versionName '0.1.0' }
+        }
+        dependencies { implementation project(':common') }
+    }
+    android {
+        compileSdk 35
+        defaultConfig { minSdk 29; targetSdk 34 }
+        compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
+    }
+}
+project(':loader') {
+    def bundle = tasks.register('bundleDependencies', Copy) {
+        into layout.buildDirectory.dir('generated/suiteAssets/apks')
+        specs.each { module, info ->
+            dependsOn ":${module}:assembleDebug"
+            from(project(":${module}").layout.buildDirectory.file("outputs/apk/debug/${module}-debug.apk")) { rename { info[0] } }
+        }
+    }
+    android.sourceSets.main.assets.srcDir(layout.buildDirectory.dir('generated/suiteAssets'))
+    tasks.configureEach { if (name.startsWith('merge') && name.endsWith('Assets')) dependsOn bundle }
+}
+project(':hub') {
+    def bundle = tasks.register('bundleLoader', Copy) {
+        dependsOn ':loader:assembleDebug'
+        into layout.buildDirectory.dir('generated/suiteAssets/apks')
+        from(project(':loader').layout.buildDirectory.file('outputs/apk/debug/loader-debug.apk')) { rename { 'nuttymod loader for __vr.apk' } }
+    }
+    android.sourceSets.main.assets.srcDir(layout.buildDirectory.dir('generated/suiteAssets'))
+    tasks.configureEach { if (name.startsWith('merge') && name.endsWith('Assets')) dependsOn bundle }
+}

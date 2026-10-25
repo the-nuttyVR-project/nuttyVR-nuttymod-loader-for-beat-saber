@@ -1,0 +1,16 @@
+{
+  "schema": "nuttyvr-nightly/1",
+  "version": "0.1.0",
+  "sourceSha256": "e3551d8c1d315ad0d91356e50cf96cdb3c12b13116a09c8e29753262d8bd9b5e",
+  "signerSha256": "29edfe99fdf42a223c669a28a73ca177d1f0fbe70b20591e70bf2ee380e49a91",
+  "apks": {
+    "nuttyVR hub.apk": "a0346993a2c75cc2700226c860b71c86ea106e970fb4409ee1a1950f99cd6c50",
+    "nuttymod loader for __vr.apk": "5547d01ced980ff4ae0c5e6555d05c2d8496d6d2b8f040873e0aaa3c179fe28d",
+    "rootmode.apk": "e3e586857ece46e4c3001b08f70a33c0289e0ea974deabdcbc67d0b13b94f47e",
+    "rootmodelib.apk": "9cb254cec41c5a3e97ba0aa85f7baf3f872d3d1284dbe002af830bf1cccd84f8",
+    "nuttymod.apk": "a354c1313b1f33973a6e21f814973ec70c0487053f029485255cbcf6ebc12722",
+    "vnedruntime.apk": "cef7df8c9ab548870d87cd0e0308922850cf248b116f8e60cf3d09c5affdb811",
+    "nuttymodruntime.apk": "b7737aa18ed9f27f10e392d1621d8dc4a9c971b00667fcea50804525fc78a8d8",
+    "nuttyVR demo game.apk": "210fce76c0fb4d0f79ed3196891497aba6f15eddbf2cf4bdbd7c318a97266616"
+  }
+}

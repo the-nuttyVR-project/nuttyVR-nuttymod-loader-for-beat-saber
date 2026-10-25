@@ -1,0 +1,10 @@
+{
+  "schema": "nuttymod/1",
+  "id": "mint-rush",
+  "name": "Mint Rush",
+  "version": "1.0.0",
+  "targetPackage": "com.nuttyvr.demo",
+  "targetVersion": "0.1.0",
+  "color": "#A9EF64",
+  "speed": 1.5
+}
